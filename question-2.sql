@@ -1,1 +1,7 @@
--- Show the sales agent's full name and invoices associated with each sales agent.
+SELECT employees.FirstName || employees.LastName AS FullName, invoices.* FROM invoices
+LEFT JOIN customers ON customers.CustomerId = invoices.CustomerId
+LEFT JOIN employees ON employees.EmployeeId = customers.SupportRepId
+WHERE employees.Title = 'Sales Support Agent'
+ORDER BY FullName;
+
+
